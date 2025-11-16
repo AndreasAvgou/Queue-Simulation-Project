@@ -37,7 +37,7 @@ Streamlit provides an interactive dashboard to visualize metrics like system uti
 - [Running the Application](#running-the-application)
 - [Database Schema](#database-schema)
 - [Future Improvements](#future-improvements)
-- [License](#license)
+
 
 ---
 
