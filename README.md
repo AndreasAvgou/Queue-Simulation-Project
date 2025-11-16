@@ -104,3 +104,15 @@ Streamlit provides an interactive dashboard to visualize metrics like system uti
 
 - Open a browser and navigate to [http://localhost:5050](http://localhost:5050).
 - Login with the credentials provided in the `docker-compose.yml` file.
+
+## Running the Application
+
+Airflow DAGs automatically trigger simulations and update the database.  
+Access Airflow UI: [http://localhost:8080](http://localhost:8080)
+
+Streamlit Dashboard reads the database and shows plots:  [http://localhost:8501](http://localhost:8501)
+
+Manually run simulation scripts inside the container:
+
+```bash
+docker exec -it <container_name> python simulations/simulator.py
