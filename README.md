@@ -34,6 +34,7 @@ Streamlit provides an interactive dashboard to visualize metrics like system uti
 - [Installation and Setup](#installation-and-setup)
   - [Prerequisites](#prerequisites)
   - [Setup Instructions](#setup-instructions)
+  - [Build and Manage Docker Containers](#Build-and-Manage-Docker-Containers)
 - [Running the Application](#running-the-application)
 - [Database Schema](#database-schema)
 - [Future Improvements](#future-improvements)
@@ -87,20 +88,28 @@ Streamlit provides an interactive dashboard to visualize metrics like system uti
 
 ### Setup Instructions
 
-1. **Clone the repository**  
-  ```bash
-  git clone https://github.com/AndreasAvgou/Queue-Simulation-Project.git
-  cd queue-simulation-project
-  ```
+**Clone the repository** 
+    ```bash
+    git clone https://github.com/AndreasAvgou/Queue-Simulation-Project.git
+    cd queue-simulation-project
+    ```
 
-2. **Build and Start the Containers**
+## Build and Manage Docker Containers
 
-   To build and run the containers for the application, run the following command:
+### Build and start containers
 
-   ```bash
-   docker-compose up --build
-
-3. **Access pgAdmin4**
+```bash
+docker-compose up --build
+```
+### Run in background (daemon mode)
+```bash
+docker-compose up -d --build
+```
+### Stop containers
+```bash
+docker-compose down
+```
+**Access pgAdmin4**
 
 - Open a browser and navigate to [http://localhost:5050](http://localhost:5050).
 - Login with the credentials provided in the `docker-compose.yml` file.
