@@ -89,10 +89,11 @@ Streamlit provides an interactive dashboard to visualize metrics like system uti
 ### Setup Instructions
 
 **Clone the repository** 
-    ```bash
-    git clone https://github.com/AndreasAvgou/Queue-Simulation-Project.git
-    cd queue-simulation-project
-    ```
+
+```bash
+git clone https://github.com/AndreasAvgou/Queue-Simulation-Project.git
+cd queue-simulation-project
+```
 
 ## Build and Manage Docker Containers
 
