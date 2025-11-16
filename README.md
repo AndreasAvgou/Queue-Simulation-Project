@@ -116,3 +116,64 @@ Manually run simulation scripts inside the container:
 
 ```bash
 docker exec -it <container_name> python simulations/simulator.py
+```
+
+## Database Schema
+
+The PostgreSQL database contains two main tables:
+
+```sql
+CREATE TABLE mm1_results
+(
+    id SERIAL PRIMARY KEY,
+    rho FLOAT,
+    lambda FLOAT,
+    mu FLOAT,
+    sim_L FLOAT,
+    sim_Lq FLOAT,
+    sim_W FLOAT,
+    sim_Wq FLOAT,
+    sim_rho_est FLOAT,
+    theory_L FLOAT,
+    theory_Lq FLOAT,
+    theory_W FLOAT,
+    theory_Wq FLOAT,
+    max_queue INTEGER,
+    pred_max_queue FLOAT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE mm1k_results
+(
+    id SERIAL PRIMARY KEY,
+    lambda FLOAT,
+    mu FLOAT,
+    K INTEGER,
+    sim_P_loss FLOAT,
+    sim_L FLOAT,
+    sim_W FLOAT,
+    sim_rho_util FLOAT,
+    theory_P_loss FLOAT,
+    theory_L FLOAT,
+    theory_W FLOAT,
+    theory_rho_util FLOAT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+## Field Descriptions
+
+- **id**: Unique identifier
+- **rho / lambda / mu / K**: Queue parameters
+- **sim_***: Simulation results
+- **theory_***: Theoretical reference values
+- **max_queue / pred_max_queue**: Observed and predicted maximum queue
+- **created_at**: Timestamp
+
+---
+
+## Future Improvements
+
+- Add more complex queueing models (e.g., M/M/c, M/G/1)
+- Include real-time simulation updates in the dashboard
+- Add user input to run custom simulations from Streamlit
+- Integrate advanced analytics or machine learning predictions on queue metrics
