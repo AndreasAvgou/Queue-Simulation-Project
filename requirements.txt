@@ -1,0 +1,8 @@
+numpy
+pandas
+matplotlib
+scipy
+scikit-learn
+streamlit
+psycopg2-binary
+apache-airflow==2.7.1

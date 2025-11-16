@@ -1,0 +1,56 @@
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: queue_sim
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: airflow
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/queue_sim
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    ports:
+      - "8080:8080"
+    entrypoint: ["/home/appuser/entrypoint.sh"]
+    command: webserver
+
+  airflow-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: airflow-scheduler
+    depends_on:
+      - airflow
+      - postgres
+    environment:
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/queue_sim
+    entrypoint: ["/home/appuser/entrypoint.sh"]
+    command: scheduler
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: streamlit
+    depends_on:
+      - postgres
+    ports:
+      - "8501:8501"
+    command: ["streamlit", "run", "app_dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
+
+volumes:
+  postgres_data:
