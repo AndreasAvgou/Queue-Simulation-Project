@@ -1,4 +1,11 @@
+<div align="center">
+<img width="688" height="233" alt="MM1QueuingSysExample_01" src="https://github.com/user-attachments/assets/28d16878-545c-4a6f-b522-77c5256b85b6" />
+
+
 # Queue Simulation Project (M/M/1 & M/M/1/K)
+  
+</div>
+
 
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![Docker](https://img.shields.io/badge/docker-ready-green)
